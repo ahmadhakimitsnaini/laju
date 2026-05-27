@@ -28,6 +28,49 @@ import {
   Zap,
   Navigation,
 } from "lucide-react";
+import { motion } from "framer-motion";
+
+// ─── Animation Variants ───────────────────────────────────────────────────────
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+// Reusable scroll-triggered wrapper
+function FadeInWhenVisible({
+  children,
+  variants = fadeUp,
+  className = "",
+  delay = 0,
+}) {
+  return (
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={variants}
+      transition={{ delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 // ─── Navbar ──────────────────────────────────────────────────────────────────
 function Navbar() {
@@ -187,38 +230,46 @@ function HeroSection() {
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 py-20 flex flex-col items-center text-center">
+      <motion.div
+        className="relative max-w-6xl mx-auto px-6 py-20 flex flex-col items-center text-center"
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
         {/* Main Logo in Hero */}
-        <div className="mb-6">
+        <motion.div className="mb-6" variants={staggerItem}>
           <img
             src={logoImage}
             alt="LAJU Logo"
             className="h-16 md:h-20 lg:h-24 object-contain"
           />
-        </div>
-
-        {/* Badge */}
-        {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#0052CC]/50 bg-[#0052CC]/10 text-white text-sm font-medium mb-6">
-          <Zap size={14} className="text-white" />
-          UI/UX Case Study — Ride-Hailing & Logistics App
-        </div> */}
+        </motion.div>
 
         {/* Headline */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 max-w-4xl">
+        <motion.h1
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 max-w-4xl"
+          variants={staggerItem}
+        >
           LAJU
-        </h1>
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 max-w-4xl">
+        </motion.h1>
+        <motion.h1
+          className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 max-w-4xl"
+          variants={staggerItem}
+        >
           Redefining <span className="text-white">Ride-Hailing</span> with{" "}
           <span className="text-white">Human-Centric</span> Tech
-        </h1>
+        </motion.h1>
 
         {/* Sub-headline */}
-        {/* <p className="text-base md:text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
-          Redefining Ride-Hailing with Human-Centric Tech
-        </p> */}
+        <motion.p
+          className="text-base md:text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed"
+          variants={staggerItem}
+        >
+          Solusi transportasi modern yang menghubungkan kebutuhan mobilitas Anda dengan kenyamanan dan keamanan.
+        </motion.p>
 
         {/* Info Cards */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <motion.div className="flex flex-wrap justify-center gap-4 mb-10" variants={staggerItem}>
           <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
             <div className="w-8 h-8 rounded-lg bg-[#0052CC]/20 flex items-center justify-center">
               <Clock size={16} className="text-white" />
@@ -239,10 +290,10 @@ function HeroSection() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA Button */}
-        <div className="flex flex-wrap justify-center items-center gap-4 mb-16">
+        <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-16" variants={staggerItem}>
           <a
             href="#prototype"
             id="cta-lihat-prototype"
@@ -269,10 +320,13 @@ function HeroSection() {
           >
             Baca Case Study
           </a>
-        </div>
+        </motion.div>
 
         {/* 4 Mockup Screens */}
-        <div className="w-full max-w-6xl overflow-x-auto pb-12 pt-8 flex justify-start lg:justify-center items-center gap-4 md:gap-8 snap-x snap-mandatory hide-scrollbar">
+        <motion.div
+          className="w-full max-w-6xl overflow-x-auto pb-12 pt-8 flex justify-start lg:justify-center items-center gap-4 md:gap-8 snap-x snap-mandatory hide-scrollbar"
+          variants={staggerItem}
+        >
           <img
             src={screen1}
             alt="Mockup 1"
@@ -293,16 +347,17 @@ function HeroSection() {
             alt="Mockup 4"
             className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px] border border-white/10 transition-all duration-500 hover:-translate-y-6 hover:scale-105 hover:shadow-[#0052CC]/20 hover:border-white/30 cursor-pointer relative z-0 hover:z-10"
           />
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
         <div className="relative mt-8 flex flex-col items-center gap-2 animate-bounce">
           <p className="text-gray-500 text-xs font-medium">
             Scroll untuk melanjutkan
           </p>
+
           <div className="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -360,53 +415,64 @@ function OverviewSection() {
       />
       <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-            Tahap Empathize
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Mengapa <span style={{ color: "#FFFFFF" }}>LAJU</span>?
-          </h2>
-          <div className="flex flex-col md:flex-row gap-6 max-w-4xl">
-            <div className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
-              <p className="text-gray-300 leading-relaxed">
-                Riset menunjukkan bahwa pengguna layanan ride-hailing sering
-                merasa tidak berdaya — driver ditugaskan secara acak tanpa
-                pilihan, meninggalkan rasa ketidakamanan terutama bagi penumpang
-                wanita dan perjalanan malam. LAJU hadir untuk mengubah paradigma
-                ini.
-              </p>
+        <FadeInWhenVisible>
+          <div className="mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
+              Tahap Empathize
             </div>
-            <div className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
-              <p className="text-gray-300 leading-relaxed">
-                Selain itu, ketidaktransparanan biaya dan ketergantungan pada
-                uang tunai menciptakan gesekan dalam pengalaman pengguna. Fitur{" "}
-                <span className="text-white font-semibold">Dompet LAJU</span>{" "}
-                hadir sebagai solusi ekosistem pembayaran yang seamless dan
-                terpercaya.
-              </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+              Mengapa <span style={{ color: "#FFFFFF" }}>LAJU</span>?
+            </h2>
+            <div className="flex flex-col md:flex-row gap-6 max-w-4xl">
+              <div className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
+                <p className="text-gray-300 leading-relaxed">
+                  Riset menunjukkan bahwa pengguna layanan ride-hailing sering
+                  merasa tidak berdaya — driver ditugaskan secara acak tanpa
+                  pilihan, meninggalkan rasa ketidakamanan terutama bagi penumpang
+                  wanita dan perjalanan malam. LAJU hadir untuk mengubah paradigma
+                  ini.
+                </p>
+              </div>
+              <div className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
+                <p className="text-gray-300 leading-relaxed">
+                  Selain itu, ketidaktransparanan biaya dan ketergantungan pada
+                  uang tunai menciptakan gesekan dalam pengalaman pengguna. Fitur{" "}
+                  <span className="text-white font-semibold">Dompet LAJU</span>{" "}
+                  hadir sebagai solusi ekosistem pembayaran yang seamless dan
+                  terpercaya.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </FadeInWhenVisible>
 
         {/* Figma Embed Placeholder */}
-        <div className="max-w-4xl mb-16 rounded-2xl overflow-hidden border border-white/10 bg-[#232323] p-4 md:p-6 lg:p-8">
-          <iframe
-            style={{ border: "none" }}
-            className="w-full aspect-video rounded-xl"
-            src="https://embed.figma.com/design/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1063-4081&embed-host=share"
-            allowFullScreen
-            title="Figma Embed Empathize"
-          ></iframe>
-        </div>
+        <FadeInWhenVisible delay={0.1}>
+          <div className="max-w-4xl mb-16 rounded-2xl overflow-hidden border border-white/10 bg-[#232323] p-4 md:p-6 lg:p-8">
+            <iframe
+              style={{ border: "none" }}
+              className="w-full aspect-video rounded-xl"
+              src="https://embed.figma.com/design/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1063-4081&embed-host=share"
+              allowFullScreen
+              title="Figma Embed Empathize"
+            ></iframe>
+          </div>
+        </FadeInWhenVisible>
 
         {/* Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+        >
           {pillars.map((pillar) => (
-            <div
+            <motion.div
               key={pillar.id}
               id={pillar.id}
               className="group relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white/20 hover:shadow-2xl cursor-default overflow-hidden"
+              variants={staggerItem}
             >
               {/* Glow background */}
               <div
@@ -455,9 +521,9 @@ function OverviewSection() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -532,14 +598,16 @@ function DefineSection() {
       />
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-            Tahap Define
+        <FadeInWhenVisible>
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
+              Tahap Define
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+              Struktur & <span className="text-white">Alur Pengguna</span>
+            </h2>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Struktur & <span className="text-white">Alur Pengguna</span>
-          </h2>
-        </div>
+        </FadeInWhenVisible>
 
         {/* Problem Statement */}
         <div
@@ -696,20 +764,22 @@ function IdeateSection() {
 
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-            Tahap Ideate
+        <FadeInWhenVisible>
+          <div className="mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
+              Tahap Ideate
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+              Desain & <span className="text-white">Ideation Process</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+              Dari brainstorming liar hingga sistem desain yang rapi — berikut
+              adalah{" "}
+              <span className="text-white font-semibold">5 artefak utama</span>{" "}
+              yang dihasilkan pada tahap ideasi LAJU menggunakan Figma & FigJam.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Desain & <span className="text-white">Ideation Process</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
-            Dari brainstorming liar hingga sistem desain yang rapi — berikut
-            adalah{" "}
-            <span className="text-white font-semibold">5 artefak utama</span>{" "}
-            yang dihasilkan pada tahap ideasi LAJU menggunakan Figma & FigJam.
-          </p>
-        </div>
+        </FadeInWhenVisible>
 
         {/* 5 Figma Embed Items */}
         <div className="flex flex-col gap-16">
@@ -850,23 +920,25 @@ function PrototypeSection() {
       />
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-            Tahap Prototype
+        <FadeInWhenVisible>
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
+              Tahap Prototype
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+              <span className="text-white">Prototype</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+              Wireframe ditransformasi menjadi desain visual akhir menggunakan
+              palet{" "}
+              <span className="text-white font-semibold">Dynamic Trust</span>{" "}
+              dengan basis{" "}
+              <span className="font-mono text-white">#1E1E1E Dark Mode</span>.
+              Setiap elemen dirancang untuk memadukan estetika modern dengan
+              usability yang intuitif.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            <span className="text-white">Prototype</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
-            Wireframe ditransformasi menjadi desain visual akhir menggunakan
-            palet{" "}
-            <span className="text-white font-semibold">Dynamic Trust</span>{" "}
-            dengan basis{" "}
-            <span className="font-mono text-white">#1E1E1E Dark Mode</span>.
-            Setiap elemen dirancang untuk memadukan estetika modern dengan
-            usability yang intuitif.
-          </p>
-        </div>
+        </FadeInWhenVisible>
 
         {/* Design Decisions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
@@ -1013,21 +1085,23 @@ function TestSection() {
       />
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-            Tahap Test & Validasi
+        <FadeInWhenVisible>
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
+              Tahap Test & Validasi
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+              Hasil <span className="text-white">Pengujian</span> Pengguna
+            </h2>
+            <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+              Pengujian usability dilakukan kepada{" "}
+              <span className="text-white font-semibold">8 pengguna target</span>{" "}
+              (mahasiswa & profesional muda, 18–30 tahun) dengan skenario tugas
+              berbasis task-based testing dalam sesi moderasi selama ±45 menit per
+              sesi.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Hasil <span className="text-white">Pengujian</span> Pengguna
-          </h2>
-          <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
-            Pengujian usability dilakukan kepada{" "}
-            <span className="text-white font-semibold">8 pengguna target</span>{" "}
-            (mahasiswa & profesional muda, 18–30 tahun) dengan skenario tugas
-            berbasis task-based testing dalam sesi moderasi selama ±45 menit per
-            sesi.
-          </p>
-        </div>
+        </FadeInWhenVisible>
 
         {/* Test Results Table */}
         <div className="overflow-x-auto mb-12 rounded-2xl border border-white/10">
