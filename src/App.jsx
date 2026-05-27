@@ -190,14 +190,18 @@ function HeroSection() {
       <div className="relative max-w-6xl mx-auto px-6 py-20 flex flex-col items-center text-center">
         {/* Main Logo in Hero */}
         <div className="mb-6">
-          <img src={logoImage} alt="LAJU Logo" className="h-16 md:h-20 lg:h-24 object-contain" />
+          <img
+            src={logoImage}
+            alt="LAJU Logo"
+            className="h-16 md:h-20 lg:h-24 object-contain"
+          />
         </div>
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#0052CC]/50 bg-[#0052CC]/10 text-white text-sm font-medium mb-6">
+        {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#0052CC]/50 bg-[#0052CC]/10 text-white text-sm font-medium mb-6">
           <Zap size={14} className="text-white" />
           UI/UX Case Study — Ride-Hailing & Logistics App
-        </div>
+        </div> */}
 
         {/* Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 max-w-4xl">
@@ -209,9 +213,9 @@ function HeroSection() {
         </h1>
 
         {/* Sub-headline */}
-        <p className="text-base md:text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
-          Solusi transportasi modern yang menghubungkan kebutuhan mobilitas Anda dengan kenyamanan dan keamanan.
-        </p>
+        {/* <p className="text-base md:text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
+          Redefining Ride-Hailing with Human-Centric Tech
+        </p> */}
 
         {/* Info Cards */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -268,11 +272,27 @@ function HeroSection() {
         </div>
 
         {/* 4 Mockup Screens */}
-        <div className="w-full max-w-6xl overflow-x-auto pb-8 flex justify-start lg:justify-center items-center gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbar">
-          <img src={screen1} alt="Mockup 1" className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px]" />
-          <img src={screen2} alt="Mockup 2" className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px]" />
-          <img src={screen3} alt="Mockup 3" className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px]" />
-          <img src={screen4} alt="Mockup 4" className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px]" />
+        <div className="w-full max-w-6xl overflow-x-auto pb-12 pt-8 flex justify-start lg:justify-center items-center gap-4 md:gap-8 snap-x snap-mandatory hide-scrollbar">
+          <img
+            src={screen1}
+            alt="Mockup 1"
+            className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px] border border-white/10 transition-all duration-500 hover:-translate-y-6 hover:scale-105 hover:shadow-[#FF7A00]/20 hover:border-white/30 cursor-pointer relative z-0 hover:z-10"
+          />
+          <img
+            src={screen2}
+            alt="Mockup 2"
+            className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px] border border-white/10 transition-all duration-500 hover:-translate-y-6 hover:scale-105 hover:shadow-[#0052CC]/20 hover:border-white/30 cursor-pointer relative z-0 hover:z-10"
+          />
+          <img
+            src={screen3}
+            alt="Mockup 3"
+            className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px] border border-white/10 transition-all duration-500 hover:-translate-y-6 hover:scale-105 hover:shadow-[#FF7A00]/20 hover:border-white/30 cursor-pointer relative z-0 hover:z-10"
+          />
+          <img
+            src={screen4}
+            alt="Mockup 4"
+            className="h-[350px] md:h-[450px] lg:h-[550px] w-auto object-contain snap-center shrink-0 shadow-2xl rounded-[24px] md:rounded-[32px] border border-white/10 transition-all duration-500 hover:-translate-y-6 hover:scale-105 hover:shadow-[#0052CC]/20 hover:border-white/30 cursor-pointer relative z-0 hover:z-10"
+          />
         </div>
 
         {/* Scroll indicator */}
