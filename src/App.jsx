@@ -82,6 +82,30 @@ function FadeInWhenVisible({
   );
 }
 
+// Micro-interaction Text Wrappers
+function StaggerWrap({ children, className = "", delay = 0 }) {
+  return (
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={staggerContainer}
+      transition={{ delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function StaggerText({ children, className = "" }) {
+  return (
+    <motion.div className={className} variants={staggerItem}>
+      {children}
+    </motion.div>
+  );
+}
+
 // ─── Navbar ──────────────────────────────────────────────────────────────────
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -491,16 +515,20 @@ function OverviewSection() {
       />
       <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
-        <FadeInWhenVisible>
+        <StaggerWrap>
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-              Tahap Empathize
-            </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-              Mengapa <span style={{ color: "#FFFFFF" }}>LAJU</span>?
-            </h2>
+            <StaggerText>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
+                Tahap Empathize
+              </div>
+            </StaggerText>
+            <StaggerText>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                Mengapa <span style={{ color: "#FFFFFF" }}>LAJU</span>?
+              </h2>
+            </StaggerText>
             <div className="flex flex-col md:flex-row gap-6 max-w-4xl">
-              <div className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
+              <StaggerText className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
                 <p className="text-gray-300 leading-relaxed">
                   Riset menunjukkan bahwa pengguna layanan ride-hailing sering
                   merasa tidak berdaya — driver ditugaskan secara acak tanpa
@@ -508,8 +536,8 @@ function OverviewSection() {
                   penumpang wanita dan perjalanan malam. LAJU hadir untuk
                   mengubah paradigma ini.
                 </p>
-              </div>
-              <div className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
+              </StaggerText>
+              <StaggerText className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
                 <p className="text-gray-300 leading-relaxed">
                   Selain itu, ketidaktransparanan biaya dan ketergantungan pada
                   uang tunai menciptakan gesekan dalam pengalaman pengguna.
@@ -518,10 +546,10 @@ function OverviewSection() {
                   hadir sebagai solusi ekosistem pembayaran yang seamless dan
                   terpercaya.
                 </p>
-              </div>
+              </StaggerText>
             </div>
           </div>
-        </FadeInWhenVisible>
+        </StaggerWrap>
 
         {/* Figma Embed Placeholder */}
         <FadeInWhenVisible delay={0.1}>
