@@ -46,3 +46,31 @@
     background: #FF7A00;
   }
 }
+
+@layer utilities {
+  /* Vertikal ke ATAS — kolom 1 & 3 */
+  @keyframes marquee-up {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  /* Vertikal ke BAWAH — kolom 2 & 4 */
+  @keyframes marquee-down {
+    0%   { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+  }
+
+  .animate-marquee-up {
+    animation: marquee-up 20s linear infinite;
+  }
+
+  .animate-marquee-down {
+    animation: marquee-down 20s linear infinite;
+  }
+
+  .animate-marquee-up:hover,
+  .animate-marquee-down:hover {
+    animation-play-state: paused;
+  }
+}
+
