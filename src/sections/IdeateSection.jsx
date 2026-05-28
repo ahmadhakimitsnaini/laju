@@ -1,8 +1,16 @@
+import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
 import SectionBadge from "../components/ui/SectionBadge";
 
 export default function IdeateSection() {
+  const [activeTab, setActiveTab] = useState("brainstorming");
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  useEffect(() => {
+    setIframeLoaded(false);
+  }, [activeTab]);
+
   const embedItems = [
     {
       id: "brainstorming",
@@ -54,6 +62,8 @@ export default function IdeateSection() {
     },
   ];
 
+  const activeItem = embedItems.find((item) => item.id === activeTab) || embedItems[0];
+
   return (
     <section id="ideate" className="py-24 px-6 relative overflow-hidden">
       {/* Crosshatch grid */}
@@ -65,13 +75,13 @@ export default function IdeateSection() {
           backgroundSize: "32px 32px",
         }}
       />
-      {/* Blue glow center */}
+      {/* Dynamic Glow Center */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #0052CC, transparent)" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5 blur-3xl pointer-events-none transition-colors duration-1000 ease-in-out"
+        style={{ background: `radial-gradient(circle, ${activeItem.accentColor}, transparent)` }}
       />
 
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-14">
@@ -88,107 +98,150 @@ export default function IdeateSection() {
           </div>
         </FadeInWhenVisible>
 
-        {/* 5 Figma Embed Items */}
-        <div className="flex flex-col gap-16">
-          {embedItems.map((item, index) => (
-            <div key={item.id} id={`ideate-${item.id}`}>
-              {/* Item Header */}
+        {/* Layout Navigasi & Konten */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* Kolom Kiri: Navigasi Tabs */}
+          <div className="lg:col-span-4 flex flex-col gap-3">
+            {embedItems.map((item) => {
+              const isActive = activeTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`flex flex-col text-left px-5 py-4 rounded-2xl transition-all duration-300 border ${
+                    isActive
+                      ? "bg-[#232323] shadow-lg translate-x-2"
+                      : "bg-transparent border-transparent hover:bg-white/5"
+                  }`}
+                  style={{
+                    borderColor: isActive ? `${item.accentColor}50` : "transparent",
+                  }}
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <span 
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-extrabold transition-colors duration-300 ${
+                        isActive ? "text-white" : "text-gray-500"
+                      }`}
+                      style={{
+                        backgroundColor: isActive ? `${item.accentColor}30` : "transparent",
+                        border: `1px solid ${isActive ? item.accentColor : "transparent"}`,
+                      }}
+                    >
+                      {item.number}
+                    </span>
+                    <span 
+                      className={`font-semibold text-lg transition-colors duration-300 ${
+                        isActive ? "text-white" : "text-gray-400"
+                      }`}
+                    >
+                      {item.title}
+                    </span>
+                  </div>
+                  <p 
+                    className={`text-sm transition-colors duration-300 line-clamp-2 ${
+                      isActive ? "text-gray-300" : "text-gray-500"
+                    }`}
+                  >
+                    {item.desc}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Kolom Kanan: Area Konten iFrame */}
+          <div className="lg:col-span-8 flex flex-col">
+            <FadeInWhenVisible key={activeItem.id}>
+              {/* Header Item Aktif */}
               <div className="flex items-start gap-4 mb-6">
                 <div
-                  className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-extrabold"
+                  className="shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-extrabold shadow-lg transition-colors duration-500"
                   style={{
-                    backgroundColor: `${item.accentColor}20`,
-                    border: `1px solid ${item.accentColor}40`,
+                    backgroundColor: `${activeItem.accentColor}20`,
+                    border: `1px solid ${activeItem.accentColor}40`,
                     color: "#FFFFFF",
                   }}
                 >
-                  {item.number}
+                  {activeItem.number}
                 </div>
                 <div className="flex-1 pt-1">
                   <h3
-                    className="text-xl md:text-2xl font-bold mb-2"
+                    className="text-2xl md:text-3xl font-bold mb-3"
                     style={{ color: "#FFFFFF" }}
                   >
-                    {item.title}
+                    {activeItem.title}
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
-                    {item.desc}
+                  <p className="text-gray-400 text-base leading-relaxed">
+                    {activeItem.desc}
                   </p>
                 </div>
               </div>
 
-              {/* Figma Embed Placeholder */}
-              {item.iframeSrc ? (
-                <div className="w-full aspect-video rounded-2xl overflow-hidden bg-[#232323] border border-white/10 p-4 md:p-6 lg:p-8">
+              {/* Tempat iFrame / Placeholder */}
+              {activeItem.iframeSrc ? (
+                <div className="relative w-full aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden bg-[#181818] border border-white/10 p-2 md:p-4 shadow-2xl">
+                  
+                  {/* Skeleton Loading State */}
+                  {!iframeLoaded && (
+                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#181818]">
+                      <div 
+                        className="w-12 h-12 border-4 border-gray-700 rounded-full animate-spin mb-4" 
+                        style={{ borderTopColor: activeItem.accentColor }} 
+                      />
+                      <p className="text-gray-400 font-medium animate-pulse">Memuat Figma Workspace...</p>
+                    </div>
+                  )}
+
                   <iframe
+                    onLoad={() => setIframeLoaded(true)}
                     style={{ border: "none" }}
-                    className="w-full h-full rounded-xl"
-                    src={item.iframeSrc}
+                    className={`w-full h-full rounded-2xl transition-opacity duration-700 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    src={activeItem.iframeSrc}
                     allowFullScreen
-                    title={`Figma Embed ${item.title}`}
+                    title={`Figma Embed ${activeItem.title}`}
                   ></iframe>
                 </div>
               ) : (
                 <div
-                  id={`embed-${item.id}`}
-                  className="aspect-video rounded-2xl flex flex-col items-center justify-center border-2 border-dashed transition-all duration-300 cursor-default group"
+                  className="w-full aspect-[4/3] md:aspect-video rounded-3xl flex flex-col items-center justify-center border-2 border-dashed transition-all duration-300 cursor-default group"
                   style={{
-                    backgroundColor: "#232323",
-                    borderColor: `${item.accentColor}30`,
+                    backgroundColor: "#181818",
+                    borderColor: `${activeItem.accentColor}30`,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = `${item.accentColor}60`;
-                    e.currentTarget.style.backgroundColor = `${item.accentColor}08`;
+                    e.currentTarget.style.borderColor = `${activeItem.accentColor}60`;
+                    e.currentTarget.style.backgroundColor = `${activeItem.accentColor}08`;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = `${item.accentColor}30`;
-                    e.currentTarget.style.backgroundColor = "#232323";
+                    e.currentTarget.style.borderColor = `${activeItem.accentColor}30`;
+                    e.currentTarget.style.backgroundColor = "#181818";
                   }}
                 >
                   <div className="text-center px-6">
                     <div
-                      className="w-16 h-16 rounded-2xl border-2 border-dashed flex items-center justify-center mx-auto mb-4 transition-colors duration-300"
+                      className="w-20 h-20 rounded-full border-2 border-dashed flex items-center justify-center mx-auto mb-6 transition-colors duration-300 bg-[#232323]"
                       style={{
-                        borderColor: `${item.accentColor}40`,
-                        color: "#FFFFFF",
+                        borderColor: `${activeItem.accentColor}40`,
+                        color: activeItem.accentLight,
                       }}
                     >
-                      <ExternalLink size={26} />
+                      <ExternalLink size={32} />
                     </div>
                     <p
-                      className="font-semibold text-base mb-2"
+                      className="text-2xl font-bold mb-3"
                       style={{ color: "#FFFFFF" }}
                     >
-                      {item.title}
+                      Visual Sedang Dipersiapkan
                     </p>
-                    <p className="text-gray-600 text-sm">
-                      Ganti dengan{" "}
-                      <code
-                        className="px-2 py-0.5 rounded text-xs"
-                        style={{
-                          color: "#FFFFFF",
-                          backgroundColor: `${item.accentColor}15`,
-                        }}
-                      >
-                        &lt;iframe src="..."&gt;
-                      </code>{" "}
-                      dari Figma embed link
+                    <p className="text-gray-500 text-base max-w-md mx-auto">
+                      Representasi visual untuk bagian Arsitektur Informasi ini sedang dalam tahap penyelesaian dan akan segera tersedia.
                     </p>
                   </div>
                 </div>
               )}
-
-              {/* Separator (except last) */}
-              {index < embedItems.length - 1 && (
-                <div
-                  className="mt-16 h-px w-full"
-                  style={{
-                    background: `linear-gradient(to right, transparent, ${item.accentColor}30, transparent)`,
-                  }}
-                />
-              )}
-            </div>
-          ))}
+            </FadeInWhenVisible>
+          </div>
         </div>
       </div>
     </section>

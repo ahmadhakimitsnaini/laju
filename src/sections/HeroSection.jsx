@@ -5,7 +5,10 @@ import screen3 from "../assets/mainPage/screen 3.png";
 import screen4 from "../assets/mainPage/screen 4.png";
 import { Clock, Wrench, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { staggerContainer, composedAnimation } from "../components/ui/Animations";
+import {
+  staggerContainer,
+  composedAnimation,
+} from "../components/ui/Animations";
 import GradientButton from "../components/ui/GradientButton";
 
 export default function HeroSection() {
@@ -33,7 +36,7 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative flex flex-col overflow-x-hidden pt-20 bg-[#1E1E1E]"
+      className="relative flex flex-col overflow-x-hidden pt-32 md:pt-40 bg-[#1E1E1E]"
     >
       {/* Kontainer Utama */}
       <div className="w-full flex flex-col items-center justify-start z-10">
@@ -81,10 +84,10 @@ export default function HeroSection() {
           </h2>
 
           {/* Sub-headline */}
-          <p className="text-base md:text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
+          {/* <p className="text-base md:text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
             Solusi transportasi modern yang menghubungkan kebutuhan mobilitas
             Anda dengan kenyamanan dan keamanan.
-          </p>
+          </p> */}
 
           {/* Info Cards */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
