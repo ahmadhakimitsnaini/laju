@@ -6,6 +6,7 @@ import screen4 from "../assets/mainPage/screen 4.png";
 import { Clock, Wrench, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { staggerContainer, composedAnimation } from "../components/ui/Animations";
+import GradientButton from "../components/ui/GradientButton";
 
 export default function HeroSection() {
   const containerRef = useRef(null);
@@ -115,21 +116,17 @@ export default function HeroSection() {
 
           {/* CTA Button */}
           <div className="flex flex-wrap justify-center items-center gap-4">
-            <a
+            <GradientButton
               href="#overview"
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
                 document
                   .querySelector("#overview")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-base transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#FF7A00]/30"
-              style={{
-                background: "linear-gradient(135deg, #FF7A00, #FF9A3C)",
-              }}
+              className="px-8 py-4 rounded-xl font-bold text-base"
             >
               Baca Case Study <ArrowRight size={18} />
-            </a>
+            </GradientButton>
           </div>
         </motion.div>
 

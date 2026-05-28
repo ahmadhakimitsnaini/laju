@@ -1,6 +1,7 @@
 import { Shield, Users, Wallet } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeInWhenVisible, StaggerWrap, StaggerText, staggerContainer, staggerItem } from "../components/ui/Animations";
+import SectionBadge from "../components/ui/SectionBadge";
 
 export default function OverviewSection() {
   const pillars = [
@@ -57,9 +58,7 @@ export default function OverviewSection() {
         <StaggerWrap>
           <div className="mb-16">
             <StaggerText>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-                Tahap Empathize
-              </div>
+              <SectionBadge variant="blue">Tahap Empathize</SectionBadge>
             </StaggerText>
             <StaggerText>
               <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">

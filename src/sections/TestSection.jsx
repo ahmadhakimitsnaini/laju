@@ -1,5 +1,6 @@
 import { CheckCircle2, Star, Quote } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
+import SectionBadge from "../components/ui/SectionBadge";
 
 export default function TestSection() {
   const testResults = [
@@ -61,9 +62,7 @@ export default function TestSection() {
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-              Tahap Test & Validasi
-            </div>
+            <SectionBadge variant="orange">Tahap Test & Validasi</SectionBadge>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
               Hasil <span className="text-white">Pengujian</span> Pengguna
             </h2>

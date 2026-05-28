@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
+import SectionBadge from "../components/ui/SectionBadge";
 
 export default function IdeateSection() {
   const embedItems = [
@@ -74,9 +75,7 @@ export default function IdeateSection() {
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0052CC]/20 border border-[#0052CC]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-              Tahap Ideate
-            </div>
+            <SectionBadge variant="blue">Tahap Ideate</SectionBadge>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
               Desain & <span className="text-white">Ideation Process</span>
             </h2>

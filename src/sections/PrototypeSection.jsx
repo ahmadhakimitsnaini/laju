@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
+import SectionBadge from "../components/ui/SectionBadge";
 
 export default function PrototypeSection() {
   return (
@@ -34,9 +35,7 @@ export default function PrototypeSection() {
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-              Tahap Prototype
-            </div>
+            <SectionBadge variant="orange">Tahap Prototype</SectionBadge>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
               <span className="text-white">Prototype</span>
             </h2>

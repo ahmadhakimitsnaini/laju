@@ -1,5 +1,6 @@
 import { Smartphone, MapPin, Navigation, Lock, Star, Quote, ChevronRight } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
+import SectionBadge from "../components/ui/SectionBadge";
 
 export default function DefineSection() {
   const journeyStages = [
@@ -71,9 +72,7 @@ export default function DefineSection() {
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF7A00]/20 border border-[#FF7A00]/30 text-white text-xs font-semibold mb-4 uppercase tracking-widest">
-              Tahap Define
-            </div>
+            <SectionBadge variant="orange">Tahap Define</SectionBadge>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
               Struktur & <span className="text-white">Alur Pengguna</span>
             </h2>

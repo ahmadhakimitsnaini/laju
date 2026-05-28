@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import logoImage from "../../assets/logo.png";
 import { ArrowRight, Menu, X, ChevronRight } from "lucide-react";
+import GradientButton from "../ui/GradientButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -71,17 +72,13 @@ export default function Navbar() {
         </ul>
 
         {/* CTA Button Desktop */}
-        <a
+        <GradientButton
           href="#prototype"
-          onClick={(e) => {
-            e.preventDefault();
-            handleNav("#prototype");
-          }}
-          className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          style={{ background: "linear-gradient(135deg, #FF7A00, #FF9A3C)" }}
+          onClick={() => handleNav("#prototype")}
+          className="hidden md:flex px-4 py-2 rounded-lg text-sm font-semibold"
         >
           Lihat Prototype <ArrowRight size={14} />
-        </a>
+        </GradientButton>
 
         {/* Mobile Hamburger */}
         <button
@@ -113,19 +110,13 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <a
+              <GradientButton
                 href="#prototype"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNav("#prototype");
-                }}
-                className="flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-semibold text-white"
-                style={{
-                  background: "linear-gradient(135deg, #FF7A00, #FF9A3C)",
-                }}
+                onClick={() => handleNav("#prototype")}
+                className="w-full py-3 rounded-lg text-sm font-semibold"
               >
                 Lihat Prototype <ArrowRight size={14} />
-              </a>
+              </GradientButton>
             </li>
           </ul>
         </div>
