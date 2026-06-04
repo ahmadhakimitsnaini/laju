@@ -7,9 +7,8 @@ export default function OverviewSection() {
   const pillars = [
     {
       id: "pillar-trust",
-      icon: <Shield size={28} className="text-white" />,
-      color: "#0052CC",
-      colorLight: "#60A5FA",
+      icon: <Shield size={28} className="text-[#0052CC]" />,
+      accentColor: "#0052CC",
       title: "Dynamic Trust",
       subtitle: "Keamanan & Transparansi",
       desc: "Verifikasi OTP dua-arah, real-time GPS tracking, dan riwayat perjalanan yang transparan membangun kepercayaan antara penumpang dan driver.",
@@ -17,9 +16,8 @@ export default function OverviewSection() {
     },
     {
       id: "pillar-empowerment",
-      icon: <Users size={28} className="text-white" />,
-      color: "#FFFFFF",
-      colorLight: "#FB923C",
+      icon: <Users size={28} className="text-[#F177A4]" />,
+      accentColor: "#F177A4",
       title: "User Empowerment",
       subtitle: "Kontrol Penuh di Tangan Anda",
       desc: "Bebas memilih driver berdasarkan profil, rating bintang, dan riwayat perjalanan. Pengguna memegang kendali atas pengalaman perjalanan mereka.",
@@ -27,9 +25,8 @@ export default function OverviewSection() {
     },
     {
       id: "pillar-fintech",
-      icon: <Wallet size={28} className="text-white" />,
-      color: "#0052CC",
-      colorLight: "#60A5FA",
+      icon: <Wallet size={28} className="text-[#0052CC]" />,
+      accentColor: "#0052CC",
       title: "Seamless Fintech",
       subtitle: "Ekosistem Pembayaran Terintegrasi",
       desc: "Dompet LAJU mengintegrasikan pembayaran cashless, manajemen saldo, histori transaksi, dan top-up dalam satu ekosistem yang mulus.",
@@ -39,20 +36,7 @@ export default function OverviewSection() {
 
   return (
     <section id="overview" className="py-24 px-6 relative overflow-hidden">
-      {/* Dot grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #60A5FA 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      {/* Blue glow top-right */}
-      <div
-        className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #0052CC, transparent)" }}
-      />
+
       <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
         <StaggerWrap>
@@ -61,13 +45,13 @@ export default function OverviewSection() {
               <SectionBadge variant="blue">Tahap Empathize</SectionBadge>
             </StaggerText>
             <StaggerText>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-                Mengapa <span style={{ color: "#FFFFFF" }}>LAJU</span>?
-              </h2>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              Mengapa <span className="text-[#0052CC]">LAJU</span>?
+            </h2>
             </StaggerText>
             <div className="flex flex-col md:flex-row gap-6 max-w-4xl">
-              <StaggerText className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
-                <p className="text-gray-300 leading-relaxed">
+              <StaggerText className="flex-1 p-6 rounded-3xl glass-card text-gray-700 leading-relaxed">
+                <p>
                   Riset menunjukkan bahwa pengguna layanan ride-hailing sering
                   merasa tidak berdaya — driver ditugaskan secara acak tanpa
                   pilihan, meninggalkan rasa ketidakamanan terutama bagi
@@ -75,12 +59,12 @@ export default function OverviewSection() {
                   mengubah paradigma ini.
                 </p>
               </StaggerText>
-              <StaggerText className="flex-1 p-6 rounded-2xl border border-white/10 bg-white/5">
-                <p className="text-gray-300 leading-relaxed">
+              <StaggerText className="flex-1 p-6 rounded-3xl glass-card text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   Selain itu, ketidaktransparanan biaya dan ketergantungan pada
                   uang tunai menciptakan gesekan dalam pengalaman pengguna.
                   Fitur{" "}
-                  <span className="text-white font-semibold">Dompet LAJU</span>{" "}
+                  <span className="text-[#0052CC] font-semibold">Dompet LAJU</span>{" "}
                   hadir sebagai solusi ekosistem pembayaran yang seamless dan
                   terpercaya.
                 </p>
@@ -91,7 +75,7 @@ export default function OverviewSection() {
 
         {/* Figma Embed Placeholder */}
         <FadeInWhenVisible delay={0.1}>
-          <div className="max-w-4xl mb-16 rounded-2xl overflow-hidden border border-white/10 bg-[#232323] p-4 md:p-6 lg:p-8">
+          <div className="max-w-4xl mb-16 rounded-3xl overflow-hidden border border-white/20 bg-[#232323] p-4 md:p-6 lg:p-8 shadow-xl shadow-black/10">
             <iframe
               style={{ border: "none" }}
               className="w-full aspect-video rounded-xl"
@@ -114,51 +98,50 @@ export default function OverviewSection() {
             <motion.div
               key={pillar.id}
               id={pillar.id}
-              className="group relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white/20 hover:shadow-2xl cursor-default overflow-hidden"
+              className="group relative p-6 rounded-3xl glass-card cursor-pointer overflow-hidden"
               variants={staggerItem}
             >
-              {/* Glow background */}
+              {/* Accent glow background */}
               <div
-                className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl"
-                style={{ backgroundColor: pillar.color }}
+                className="absolute -top-10 -right-10 w-36 h-36 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl pointer-events-none"
+                style={{ backgroundColor: pillar.accentColor }}
               />
 
-              {/* Icon */}
+              {/* Icon Container */}
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
                 style={{
-                  backgroundColor: `${pillar.color}20`,
-                  border: `1px solid ${pillar.color}40`,
+                  background: `linear-gradient(135deg, ${pillar.accentColor}18 0%, ${pillar.accentColor}08 100%)`,
+                  border: `1px solid ${pillar.accentColor}30`,
                 }}
               >
                 {pillar.icon}
               </div>
 
-              {/* Content */}
-              <p
-                className="text-xs font-semibold uppercase tracking-widest mb-1"
-                style={{ color: "#FFFFFF" }}
-              >
+              {/* Subtitle */}
+              <p className="text-xs font-bold uppercase tracking-widest mb-1 text-gray-400">
                 {pillar.subtitle}
               </p>
-              <h3 className="text-xl font-bold text-white mb-3">
+
+              {/* Title */}
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {pillar.title}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-5">
+
+              {/* Description */}
+              <p className="text-gray-500 text-sm leading-relaxed mb-5">
                 {pillar.desc}
               </p>
+
+              {/* Stats Divider Row */}
+              <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4" />
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
                 {pillar.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-full text-xs font-medium border"
-                    style={{
-                      borderColor: `${pillar.color}60`,
-                      color: "#FFFFFF",
-                      backgroundColor: `${pillar.color}15`,
-                    }}
+                    className="glass-tag px-3 py-1 rounded-full text-xs font-semibold text-gray-700"
                   >
                     {tag}
                   </span>

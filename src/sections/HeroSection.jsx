@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import screen1 from "../assets/mainPage/screen.png";
-import screen2 from "../assets/mainPage/screen 2.png";
-import screen3 from "../assets/mainPage/screen 3.png";
-import screen4 from "../assets/mainPage/screen 4.png";
+import screen1 from "../assets/mainPage/screen.webp";
+import screen2 from "../assets/mainPage/screen 2.webp";
+import screen3 from "../assets/mainPage/screen 3.webp";
+import screen4 from "../assets/mainPage/screen 4.webp";
 import { Clock, Wrench, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -36,31 +36,10 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative flex flex-col overflow-x-hidden pt-32 md:pt-40 bg-[#1E1E1E]"
+      className="relative flex flex-col overflow-x-hidden pt-32 md:pt-40"
     >
       {/* Kontainer Utama */}
       <div className="w-full flex flex-col items-center justify-start z-10">
-        {/* Background Gradient Blobs */}
-        <div
-          className="absolute top-1/4 -left-32 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, #0052CC, transparent)",
-          }}
-        />
-        <div
-          className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, #FF7A00, transparent)",
-          }}
-        />
-        {/* Grid pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
 
         {/* ── ATAS: TEKS HERO ── */}
         <motion.div
@@ -75,42 +54,48 @@ export default function HeroSection() {
           </div> */}
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 max-w-4xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-2 max-w-4xl">
             LAJU
           </h1>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 max-w-4xl">
-            Redefining <span className="text-white">Ride-Hailing</span> with{" "}
-            <span className="text-white">Human-Centric</span> Tech
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6 max-w-4xl">
+            Redefining <span className="text-[#0052CC]">Ride-Hailing</span> with{" "}
+            <span className="text-[#FF7A00]">Human-Centric</span> Tech
           </h2>
 
           {/* Sub-headline */}
-          {/* <p className="text-base md:text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
+          {/* <p className="text-base md:text-xl text-gray-700 max-w-2xl mb-8 leading-relaxed">
             Solusi transportasi modern yang menghubungkan kebutuhan mobilitas
             Anda dengan kenyamanan dan keamanan.
           </p> */}
 
           {/* Info Cards */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-              <div className="w-8 h-8 rounded-lg bg-[#0052CC]/20 flex items-center justify-center">
-                <Clock size={16} className="text-white" />
+            <div className="flex items-center gap-3 px-5 py-3 rounded-2xl glass-card cursor-pointer">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: "linear-gradient(135deg, #0052CC18 0%, #0052CC08 100%)", border: "1px solid #0052CC30" }}
+              >
+                <Clock size={16} className="text-[#0052CC]" />
               </div>
               <div>
-                <p className="text-xs text-gray-400 font-medium text-left">
+                <p className="text-xs text-gray-400 font-semibold text-left uppercase tracking-wider">
                   Timeline
                 </p>
-                <p className="text-white font-semibold text-sm">4 Minggu</p>
+                <p className="text-gray-900 font-bold text-sm">4 Minggu</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-              <div className="w-8 h-8 rounded-lg bg-[#FF7A00]/20 flex items-center justify-center">
-                <Wrench size={16} className="text-white" />
+            <div className="flex items-center gap-3 px-5 py-3 rounded-2xl glass-card cursor-pointer">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: "linear-gradient(135deg, #FF7A0018 0%, #FF7A0008 100%)", border: "1px solid #FF7A0030" }}
+              >
+                <Wrench size={16} className="text-[#FF7A00]" />
               </div>
               <div>
-                <p className="text-xs text-gray-400 font-medium text-left">
+                <p className="text-xs text-gray-400 font-semibold text-left uppercase tracking-wider">
                   Tools
                 </p>
-                <p className="text-white font-semibold text-sm">
+                <p className="text-gray-900 font-bold text-sm">
                   Figma, Auto Flow
                 </p>
               </div>
@@ -140,9 +125,7 @@ export default function HeroSection() {
           animate="visible"
           variants={staggerContainer}
         >
-          {/* Fade gradient atas/bawah agar terpotong dengan mulus */}
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#1E1E1E] to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1E1E1E] to-transparent z-20 pointer-events-none" />
+          {/* Fade gradient atas/bawah dihapus agar DynamicBackground terlihat utuh */}
 
           {/* Kolom 1 (Kiri Luar - Ke Atas) */}
           <motion.div
@@ -157,7 +140,9 @@ export default function HeroSection() {
                     key={`col1-${i}`}
                     src={src}
                     alt={`Mockup 1-${i}`}
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-105 hover:border-white/30"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
                   />
                 ),
               )}
@@ -177,7 +162,9 @@ export default function HeroSection() {
                     key={`col2-${i}`}
                     src={src}
                     alt={`Mockup 2-${i}`}
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-105 hover:border-white/30"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
                   />
                 ),
               )}
@@ -197,7 +184,9 @@ export default function HeroSection() {
                     key={`col3-${i}`}
                     src={src}
                     alt={`Mockup 3-${i}`}
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-105 hover:border-white/30"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
                   />
                 ),
               )}
@@ -217,7 +206,9 @@ export default function HeroSection() {
                     key={`col4-${i}`}
                     src={src}
                     alt={`Mockup 4-${i}`}
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-105 hover:border-white/30"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
                   />
                 ),
               )}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
 import SectionBadge from "../components/ui/SectionBadge";
@@ -7,9 +7,6 @@ export default function IdeateSection() {
   const [activeTab, setActiveTab] = useState("brainstorming");
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  useEffect(() => {
-    setIframeLoaded(false);
-  }, [activeTab]);
 
   const embedItems = [
     {
@@ -66,33 +63,20 @@ export default function IdeateSection() {
 
   return (
     <section id="ideate" className="py-24 px-6 relative overflow-hidden">
-      {/* Crosshatch grid */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,82,204,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,82,204,0.6) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-      {/* Dynamic Glow Center */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5 blur-3xl pointer-events-none transition-colors duration-1000 ease-in-out"
-        style={{ background: `radial-gradient(circle, ${activeItem.accentColor}, transparent)` }}
-      />
+
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-14">
             <SectionBadge variant="blue">Tahap Ideate</SectionBadge>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-              Desain & <span className="text-white">Ideation Process</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              Desain & <span className="text-[#0052CC]">Ideation Process</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+            <p className="text-gray-600 text-lg max-w-3xl leading-relaxed">
               Dari brainstorming liar hingga sistem desain yang rapi — berikut
               adalah{" "}
-              <span className="text-white font-semibold">5 artefak utama</span>{" "}
+              <span className="text-gray-800 font-semibold">5 artefak utama</span>{" "}
               yang dihasilkan pada tahap ideasi LAJU menggunakan Figma & FigJam.
             </p>
           </div>
@@ -108,11 +92,14 @@ export default function IdeateSection() {
               return (
                 <button
                   key={item.id}
-                  onClick={() => setActiveTab(item.id)}
-                  className={`flex flex-col text-left px-5 py-4 rounded-2xl transition-all duration-300 border ${
+                  onClick={() => {
+                    setActiveTab(item.id);
+                    setIframeLoaded(false);
+                  }}
+                  className={`flex flex-col text-left px-5 py-4 rounded-3xl transition-all duration-300 border ${
                     isActive
-                      ? "bg-[#232323] shadow-lg translate-x-2"
-                      : "bg-transparent border-transparent hover:bg-white/5"
+                      ? "glass-card shadow-lg translate-x-2"
+                      : "bg-transparent border-transparent hover:bg-white/60 hover:shadow-sm"
                   }`}
                   style={{
                     borderColor: isActive ? `${item.accentColor}50` : "transparent",
@@ -121,7 +108,7 @@ export default function IdeateSection() {
                   <div className="flex items-center gap-3 mb-2">
                     <span 
                       className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-extrabold transition-colors duration-300 ${
-                        isActive ? "text-white" : "text-gray-500"
+                        isActive ? "text-black" : "text-black0"
                       }`}
                       style={{
                         backgroundColor: isActive ? `${item.accentColor}30` : "transparent",
@@ -132,7 +119,7 @@ export default function IdeateSection() {
                     </span>
                     <span 
                       className={`font-semibold text-lg transition-colors duration-300 ${
-                        isActive ? "text-white" : "text-gray-400"
+                        isActive ? "text-black" : "text-gray-600"
                       }`}
                     >
                       {item.title}
@@ -140,7 +127,7 @@ export default function IdeateSection() {
                   </div>
                   <p 
                     className={`text-sm transition-colors duration-300 line-clamp-2 ${
-                      isActive ? "text-gray-300" : "text-gray-500"
+                      isActive ? "text-gray-700" : "text-black0"
                     }`}
                   >
                     {item.desc}
@@ -172,7 +159,7 @@ export default function IdeateSection() {
                   >
                     {activeItem.title}
                   </h3>
-                  <p className="text-gray-400 text-base leading-relaxed">
+                  <p className="text-gray-600 text-base leading-relaxed">
                     {activeItem.desc}
                   </p>
                 </div>
@@ -180,7 +167,7 @@ export default function IdeateSection() {
 
               {/* Tempat iFrame / Placeholder */}
               {activeItem.iframeSrc ? (
-                <div className="relative w-full aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden bg-[#181818] border border-white/10 p-2 md:p-4 shadow-2xl">
+                <div className="relative w-full aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden bg-[#181818] border border-white/20 p-2 md:p-4 shadow-xl shadow-black/10">
                   
                   {/* Skeleton Loading State */}
                   {!iframeLoaded && (
@@ -189,7 +176,7 @@ export default function IdeateSection() {
                         className="w-12 h-12 border-4 border-gray-700 rounded-full animate-spin mb-4" 
                         style={{ borderTopColor: activeItem.accentColor }} 
                       />
-                      <p className="text-gray-400 font-medium animate-pulse">Memuat Figma Workspace...</p>
+                      <p className="text-gray-600 font-medium animate-pulse">Memuat Figma Workspace...</p>
                     </div>
                   )}
 
@@ -234,7 +221,7 @@ export default function IdeateSection() {
                     >
                       Visual Sedang Dipersiapkan
                     </p>
-                    <p className="text-gray-500 text-base max-w-md mx-auto">
+                    <p className="text-black0 text-base max-w-md mx-auto">
                       Representasi visual untuk bagian Arsitektur Informasi ini sedang dalam tahap penyelesaian dan akan segera tersedia.
                     </p>
                   </div>

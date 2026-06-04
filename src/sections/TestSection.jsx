@@ -43,32 +43,18 @@ export default function TestSection() {
 
   return (
     <section id="test" className="py-24 px-6 relative overflow-hidden">
-      {/* Radial dot grid */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #60A5FA 1.5px, transparent 1.5px)",
-          backgroundSize: "36px 36px",
-          backgroundPosition: "18px 18px",
-        }}
-      />
-      {/* Blue glow top-right */}
-      <div
-        className="absolute -top-20 right-0 w-96 h-96 rounded-full opacity-8 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #0052CC, transparent)" }}
-      />
+
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible>
           <div className="mb-12">
             <SectionBadge variant="orange">Tahap Test & Validasi</SectionBadge>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-              Hasil <span className="text-white">Pengujian</span> Pengguna
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              Hasil <span className="text-[#0052CC]">Pengujian</span> Pengguna
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+            <p className="text-gray-500 text-lg max-w-3xl leading-relaxed">
               Pengujian usability dilakukan kepada{" "}
-              <span className="text-white font-semibold">
+              <span className="text-gray-800 font-semibold">
                 8 pengguna target
               </span>{" "}
               (mahasiswa & profesional muda, 18–30 tahun) dengan skenario tugas
@@ -79,26 +65,26 @@ export default function TestSection() {
         </FadeInWhenVisible>
 
         {/* Test Results Table */}
-        <div className="overflow-x-auto mb-12 rounded-2xl border border-white/10">
+        <div className="overflow-x-auto mb-12 rounded-3xl glass-card border border-white/40">
           <table className="w-full" id="test-results-table">
             <thead>
               <tr
-                className="border-b border-white/10"
+                className="border-b border-white/20"
                 style={{ background: "#2A2A2A" }}
               >
-                <th className="text-left px-6 py-4 text-gray-400 font-semibold text-sm w-8">
+                <th className="text-left px-6 py-4 text-gray-600 font-semibold text-sm w-8">
                   #
                 </th>
-                <th className="text-left px-4 py-4 text-gray-400 font-semibold text-sm">
+                <th className="text-left px-4 py-4 text-gray-600 font-semibold text-sm">
                   Task / Skenario
                 </th>
-                <th className="text-left px-4 py-4 text-gray-400 font-semibold text-sm">
+                <th className="text-left px-4 py-4 text-gray-600 font-semibold text-sm">
                   Status
                 </th>
-                <th className="text-left px-4 py-4 text-gray-400 font-semibold text-sm">
+                <th className="text-left px-4 py-4 text-gray-600 font-semibold text-sm">
                   Completion
                 </th>
-                <th className="text-left px-4 py-4 text-gray-400 font-semibold text-sm">
+                <th className="text-left px-4 py-4 text-gray-600 font-semibold text-sm">
                   Catatan Temuan
                 </th>
               </tr>
@@ -107,20 +93,20 @@ export default function TestSection() {
               {testResults.map((row, idx) => (
                 <tr
                   key={idx}
-                  className="border-b border-white/5 hover:bg-white/5 transition-colors duration-200"
+                  className="border-b border-gray-200 hover:bg-white/60 transition-colors duration-200"
                 >
-                  <td className="px-6 py-4 text-gray-500 text-sm font-medium">
+                  <td className="px-6 py-4 text-gray-400 text-sm font-medium">
                     {idx + 1}
                   </td>
-                  <td className="px-4 py-4 text-white text-sm font-medium min-w-48">
+                  <td className="px-4 py-4 text-gray-800 text-sm font-medium min-w-48">
                     {row.task}
                   </td>
                   <td className="px-4 py-4">
                     <span
                       className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
                         row.status === "success"
-                          ? "bg-[#0052CC]/20 text-white border border-[#0052CC]/30"
-                          : "bg-[#FF7A00]/20 text-white border border-[#FF7A00]/30"
+                          ? "bg-[#0052CC]/20 text-black border border-[#0052CC]/30"
+                          : "bg-[#FF7A00]/20 text-black border border-[#FF7A00]/30"
                       }`}
                     >
                       {row.status === "success" ? (
@@ -133,7 +119,7 @@ export default function TestSection() {
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-16 h-1.5 rounded-full bg-white/10 overflow-hidden">
+                      <div className="w-16 h-1.5 rounded-full bg-gray-100 overflow-hidden">
                         <div
                           className="h-full rounded-full transition-all duration-500"
                           style={{
@@ -143,12 +129,12 @@ export default function TestSection() {
                           }}
                         />
                       </div>
-                      <span className="text-xs font-bold text-gray-300">
+                      <span className="text-xs font-bold text-gray-700">
                         {row.completion}
                       </span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-gray-400 text-sm leading-relaxed min-w-64">
+                  <td className="px-4 py-4 text-gray-600 text-sm leading-relaxed min-w-64">
                     {row.note}
                   </td>
                 </tr>
@@ -178,42 +164,40 @@ export default function TestSection() {
             <div
               key={idx}
               id={`feedback-quote-${idx + 1}`}
-              className="relative p-6 rounded-2xl border border-[#0052CC]/20 overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #0052CC10, #0052CC05)",
-              }}
+              className="relative p-6 rounded-3xl glass-card overflow-hidden cursor-pointer"
             >
               <Quote
-                size={40}
-                className="text-white/20 absolute top-4 right-4"
+                size={36}
+                className="text-[#0052CC]/15 absolute top-4 right-4"
                 strokeWidth={1}
               />
-              <div className="flex mb-3">
+              <div className="flex mb-4">
                 {[...Array(feedback.stars)].map((_, i) => (
                   <Star
                     key={i}
                     size={14}
-                    className="text-white fill-[#FF7A00]"
+                    className="fill-[#FF7A00] text-[#FF7A00]"
                   />
                 ))}
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed italic mb-5">
                 {feedback.quote}
               </p>
+              <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4" />
               <div className="flex items-center gap-3">
                 <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white"
                   style={{
-                    background: "linear-gradient(135deg, #0052CC, #FF7A00)",
+                    background: "linear-gradient(135deg, #0052CC, #F177A4)",
                   }}
                 >
                   {feedback.name.charAt(feedback.name.length - 1)}
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">
+                  <p className="text-gray-900 font-semibold text-sm">
                     {feedback.name}
                   </p>
-                  <p className="text-gray-500 text-xs">{feedback.role}</p>
+                  <p className="text-gray-400 text-xs">{feedback.role}</p>
                 </div>
               </div>
             </div>
