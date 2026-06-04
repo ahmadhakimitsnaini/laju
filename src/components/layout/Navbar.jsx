@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logoImage from "../../assets/logo.png";
+import logoImage from "../../assets/logo.webp";
 import { ArrowRight, Menu, X, ChevronRight } from "lucide-react";
 import GradientButton from "../ui/GradientButton";
 
@@ -64,7 +64,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "backdrop-blur-md bg-[#1E1E1E]/90 border-b border-white/10 shadow-lg shadow-black/20"
+          ? "backdrop-blur-md bg-[#F4F4F0]/80 border-b border-white/40 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -106,7 +106,7 @@ export default function Navbar() {
                     handleNav(link.href);
                   }}
                   className={`text-sm font-medium transition-all duration-200 relative group flex items-center ${
-                    isActive ? "text-white" : "text-gray-300 hover:text-white"
+                    isActive ? "text-black" : "text-gray-700 hover:text-black"
                   }`}
                 >
                   {link.label}
@@ -137,16 +137,15 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           id="mobile-menu-toggle"
-          className="md:hidden text-gray-300 hover:text-white transition-colors p-1"
+          className="md:hidden text-gray-700 hover:text-black transition-colors p-1"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden backdrop-blur-md bg-[#1E1E1E]/95 border-t border-white/10 px-6 py-4 absolute w-full shadow-xl">
+        <div className="md:hidden backdrop-blur-md bg-[#F4F4F0]/95 border-t border-white/40 px-6 py-4 absolute w-full shadow-lg">
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
@@ -159,10 +158,10 @@ export default function Navbar() {
                       handleNav(link.href);
                     }}
                     className={`text-base font-medium transition-colors flex items-center gap-2 ${
-                      isActive ? "text-[#FF7A00]" : "text-gray-300 hover:text-white"
+                      isActive ? "text-[#FF7A00]" : "text-gray-700 hover:text-black"
                     }`}
                   >
-                    <ChevronRight size={16} className={isActive ? "text-[#FF7A00]" : "text-white/50"} />
+                    <ChevronRight size={16} className={isActive ? "text-[#FF7A00]" : "text-black/50"} />
                     {link.label}
                   </a>
                 </li>

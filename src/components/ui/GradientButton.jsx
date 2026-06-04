@@ -10,8 +10,7 @@ export default function GradientButton({ children, href, onClick, className = ""
     <a
       href={href}
       onClick={handleClick}
-      className={`inline-flex items-center justify-center gap-2 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#FF7A00]/30 ${className}`}
-      style={{ background: "linear-gradient(135deg, #FF7A00, #FF9A3C)" }}
+      className={`inline-flex items-center justify-center gap-2 glass-button text-gray-900 font-bold px-6 py-3 cursor-pointer rounded-xl ${className}`}
     >
       {children}
     </a>

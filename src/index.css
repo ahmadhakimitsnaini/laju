@@ -7,24 +7,35 @@
     box-sizing: border-box;
   }
 
+  /* Selection Highlight Custom (things.inc style) */
+  ::selection {
+    background: #F177A4; /* Hot Pink */
+    color: #000000;
+  }
+  ::-moz-selection {
+    background: #F177A4;
+    color: #000000;
+  }
+
   html {
     scroll-behavior: smooth;
-    background-color: #1E1E1E;
-    background-image: linear-gradient(135deg, #0B192C 0%, #1E1E1E 100%);
-    background-attachment: fixed;
+    background-color: #F8F9FA; /* Clean Light Gray */
   }
 
   body {
     margin: 0;
     padding: 0;
-    background-color: #1E1E1E;
-    background-image: linear-gradient(135deg, #0B192C 0%, #1E1E1E 100%);
-    background-attachment: fixed;
-    color: #F3F4F6;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #F4F6F8;
+    color: #111111; /* Solid Black/Dark Gray */
+    font-family: 'Roobert', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+  }
+
+  /* Khusus heading pakai Serif berkarakter */
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Roobert', sans-serif;
   }
 
   #root {
@@ -33,28 +44,165 @@
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #1E1E1E;
+    background: #F8F9FA;
+    border-left: 2px solid #000;
   }
   ::-webkit-scrollbar-thumb {
-    background: #0052CC;
-    border-radius: 3px;
+    background: #000000;
+    border-left: 2px solid #000;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF7A00;
+    background: #F177A4;
   }
 }
 
 @layer utilities {
-  /* Vertikal ke ATAS — kolom 1 & 3 */
+  /* Brutalist Shadows & Borders */
+  .retro-shadow {
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+    border: 3px solid #000000;
+  }
+
+  /* Efek ditekan / aktif */
+  .retro-shadow:active {
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+    transform: translate(4px, 4px);
+  }
+
+  /* Hover state brutalist */
+  .retro-shadow-hover {
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  
+  .retro-shadow-hover:hover {
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+    transform: translate(-4px, -4px);
+  }
+
+  /* ─────────────────────────────────────────────
+     Glassmorphism Card System
+  ───────────────────────────────────────────── */
+
+  /* Kartu Utama: Frosted Glass + Gradient */
+  .glass-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.94) 0%, rgba(200,232,255,0.76) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.75);
+    box-shadow:
+      0 4px 6px -1px rgba(0,0,0,0.04),
+      0 20px 50px -15px rgba(0,0,0,0.09),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .glass-card:hover {
+    box-shadow:
+      0 4px 6px -1px rgba(0,0,0,0.06),
+      0 30px 60px -15px rgba(0,0,0,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    transform: translateY(-4px);
+  }
+
+  /* Kartu Aksen Biru */
+  .glass-card-blue {
+    background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(193,225,255,0.78) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(147,210,255,0.45);
+    box-shadow:
+      0 4px 6px -1px rgba(0,82,204,0.06),
+      0 20px 50px -15px rgba(0,82,204,0.12),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .glass-card-blue:hover {
+    box-shadow:
+      0 4px 6px -1px rgba(0,82,204,0.1),
+      0 30px 60px -15px rgba(0,82,204,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    transform: translateY(-4px);
+  }
+
+  /* Divider vertikal tipis untuk stat grid */
+  .stat-divider {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1), transparent);
+  }
+
+  /* Skill Tag / Pill Glass */
+  .glass-tag {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(0,0,0,0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+
+  .glass-tag:hover {
+    background: rgba(255,255,255,0.82);
+    border-color: rgba(0,0,0,0.15);
+  }
+
+  /* Tombol CTA Utama: Inner Highlight Kaca */
+  .glass-button {
+    background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(210,238,255,0.82) 100%);
+    border: 1px solid rgba(255,255,255,0.88);
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,0.95),
+      inset 0 -1px 3px rgba(0,0,0,0.04),
+      0 4px 12px rgba(0,0,0,0.07);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .glass-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,0.95),
+      inset 0 -1px 3px rgba(0,0,0,0.04),
+      0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  .glass-button:active {
+    transform: translateY(0px);
+    box-shadow:
+      inset 0 1px 2px rgba(255,255,255,0.8),
+      0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  /* Tombol Ikon Bulat: Putih solid + shadow halus */
+  .circle-icon-btn {
+    background-color: white;
+    border-radius: 9999px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.06),
+      0 6px 16px rgba(0,0,0,0.08);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .circle-icon-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+      0 4px 8px rgba(0,0,0,0.08),
+      0 12px 24px rgba(0,0,0,0.12);
+  }
+
+  .circle-icon-btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Marquee Animations (Tetap dipertahankan untuk grid) */
   @keyframes marquee-up {
     0%   { transform: translateY(0); }
     100% { transform: translateY(-50%); }
   }
 
-  /* Vertikal ke BAWAH — kolom 2 & 4 */
   @keyframes marquee-down {
     0%   { transform: translateY(-50%); }
     100% { transform: translateY(0); }
@@ -62,10 +210,12 @@
 
   .animate-marquee-up {
     animation: marquee-up 45s linear infinite;
+    will-change: transform;
   }
 
   .animate-marquee-down {
     animation: marquee-down 50s linear infinite;
+    will-change: transform;
   }
 
   .animate-marquee-up:hover,
@@ -73,4 +223,3 @@
     animation-play-state: paused;
   }
 }
-
