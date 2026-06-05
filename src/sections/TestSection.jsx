@@ -18,7 +18,7 @@ export default function TestSection() {
       status: "warning",
       statusLabel: "Perlu Perbaikan",
       completion: "75%",
-      note: "2 dari 8 pengguna kesulitan menemukan menu promo. Perlu penambahan visual cue yang lebih menonjol.",
+      note: "pengguna kesulitan menemukan menu promo. Perlu penambahan visual cue yang lebih menonjol.",
     },
     {
       task: "Memberikan Ulasan Bintang 5 Setelah Perjalanan",
