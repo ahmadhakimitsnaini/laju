@@ -1,6 +1,8 @@
 import { CheckCircle2, Star, Quote } from "lucide-react";
 import { FadeInWhenVisible } from "../components/ui/Animations";
 import SectionBadge from "../components/ui/SectionBadge";
+import arkan1 from "../assets/mainPage/arkan1.webp";
+import arkan2 from "../assets/mainPage/arkan2.webp";
 
 export default function TestSection() {
   const testResults = [
@@ -25,13 +27,13 @@ export default function TestSection() {
       completion: "100%",
       note: "Post-trip flow sangat smooth. Rating stars langsung accessible dari layar ringkasan perjalanan.",
     },
-    {
-      task: "Top-Up Dompet LAJU",
-      status: "success",
-      statusLabel: "Berhasil",
-      completion: "88%",
-      note: "7 dari 8 pengguna berhasil. 1 pengguna butuh bantuan karena kurang familiar dengan e-wallet.",
-    },
+    // {
+    //   task: "Top-Up Dompet LAJU",
+    //   status: "success",
+    //   statusLabel: "Berhasil",
+    //   completion: "88%",
+    //   note: "7 dari 8 pengguna berhasil. 1 pengguna butuh bantuan karena kurang familiar dengan e-wallet.",
+    // },
     {
       task: "Pilih Driver Manual Berdasarkan Rating",
       status: "success",
@@ -43,7 +45,6 @@ export default function TestSection() {
 
   return (
     <section id="test" className="py-24 px-6 relative overflow-hidden">
-
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible>
@@ -55,14 +56,54 @@ export default function TestSection() {
             <p className="text-gray-500 text-lg max-w-3xl leading-relaxed">
               Pengujian usability dilakukan kepada{" "}
               <span className="text-gray-800 font-semibold">
-                8 pengguna target
+                1 pengguna target
               </span>{" "}
-              (mahasiswa & profesional muda, 18–30 tahun) dengan skenario tugas
-              berbasis task-based testing dalam sesi moderasi selama ±45 menit
-              per sesi.
+              (mahasiswa) dengan skenario tugas berbasis task-based testing
+              dalam sesi moderasi selama ±15 menit per sesi.
             </p>
           </div>
         </FadeInWhenVisible>
+
+        {/* Testing Images Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 items-start">
+          {/* Image 1 */}
+          <FadeInWhenVisible delay={0.2}>
+            <div className="rounded-3xl overflow-hidden glass-card border border-white/40 shadow-lg relative group bg-black/5 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
+              <img
+                src={arkan1}
+                alt="Dokumentasi Usability Testing 1"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute bottom-6 left-6 z-20">
+                <p className="text-white font-medium bg-black/40 backdrop-blur-md px-4 py-2 rounded-full text-xs inline-block border border-white/20">
+                  Sesi Pengujian 1
+                </p>
+              </div>
+            </div>
+          </FadeInWhenVisible>
+
+          {/* Image 2 */}
+          <FadeInWhenVisible delay={0.3}>
+            <div className="rounded-3xl overflow-hidden glass-card border border-white/40 shadow-lg relative group bg-black/5 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
+              <img
+                src={arkan2}
+                alt="Dokumentasi Usability Testing 2"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute bottom-6 left-6 z-20">
+                <p className="text-white font-medium bg-black/40 backdrop-blur-md px-4 py-2 rounded-full text-xs inline-block border border-white/20">
+                  Sesi Pengujian 2
+                </p>
+              </div>
+            </div>
+          </FadeInWhenVisible>
+        </div>
 
         {/* Test Results Table */}
         <div className="overflow-x-auto mb-12 rounded-3xl glass-card border border-white/40">
@@ -144,20 +185,20 @@ export default function TestSection() {
         </div>
 
         {/* User Feedback Quote */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {[
-            {
-              quote:
-                '"Fitur pilih driver-nya itu game changer banget! Akhirnya ada aplikasi yang ngerti kebutuhan aku sebagai pengguna wanita yang sering naik ojol malem-malem."',
-              name: "Responden A",
-              role: "Mahasiswi, 21 tahun",
-              stars: 5,
-            },
+            // {
+            //   quote:
+            //     '"Fitur pilih driver-nya itu game changer banget! Akhirnya ada aplikasi yang ngerti kebutuhan aku sebagai pengguna wanita yang sering naik ojol malem-malem."',
+            //   name: "Responden A",
+            //   role: "Mahasiswi, 21 tahun",
+            //   stars: 5,
+            // },
             {
               quote:
                 '"Tampilannya clean banget dan dark mode-nya enak di mata. Navigasi antar menu juga udah sangat intuitif, gak perlu mikir panjang buat nemuin fitur yang dicari."',
-              name: "Responden B",
-              role: "Profesional, 27 tahun",
+              name: "Arkan",
+              role: "Mahasiswa, 20 Tahun",
               stars: 5,
             },
           ].map((feedback, idx) => (
@@ -203,6 +244,31 @@ export default function TestSection() {
             </div>
           ))}
         </div>
+
+        {/* Project Conclusion */}
+        <FadeInWhenVisible delay={0.4}>
+          <div className="mt-12 p-8 rounded-3xl glass-card border border-[#0052CC]/20 bg-gradient-to-br from-white/80 to-[#0052CC]/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#0052CC]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start md:items-center">
+              <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 shrink-0">
+                <CheckCircle2 size={32} className="text-[#0052CC]" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  Kesimpulan Proyek
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Proyek UI/UX LAJU berhasil menghadirkan solusi inovatif untuk
+                  layanan transportasi online. Melalui proses riset, ideasi, dan
+                  pengujian yang komprehensif, antarmuka ini terbukti lebih
+                  intuitif dan meningkatkan kenyamanan serta keamanan pengguna,
+                  khususnya dengan fitur unggulan pemilihan driver manual dan
+                  kemudahan transaksi e-wallet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeInWhenVisible>
       </div>
     </section>
   );
