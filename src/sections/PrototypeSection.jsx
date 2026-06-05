@@ -103,31 +103,16 @@ export default function PrototypeSection() {
           ))}
         </div>
 
-        {/* Figma Prototype Embed - iPhone 17 Pro Max Mockup */}
+        {/* Figma Prototype Embed */}
         <div className="relative flex flex-col items-center">
-          {/* Phone Frame */}
-          <div className="relative bg-black border-[12px] md:border-[16px] border-[#121212] rounded-[3.5rem] h-[720px] w-[340px] md:h-[820px] md:w-[390px] shadow-2xl shadow-[#FF7A00]/15 ring-1 ring-white/10 mt-6 mb-4">
-            {/* Hardware Buttons */}
-            <div className="absolute -left-[14px] md:-left-[18px] top-[110px] w-[3px] h-[25px] bg-[#222] rounded-l-md"></div>
-            <div className="absolute -left-[14px] md:-left-[18px] top-[150px] w-[3px] h-[50px] bg-[#222] rounded-l-md"></div>
-            <div className="absolute -left-[14px] md:-left-[18px] top-[210px] w-[3px] h-[50px] bg-[#222] rounded-l-md"></div>
-            <div className="absolute -right-[14px] md:-right-[18px] top-[170px] w-[3px] h-[75px] bg-[#222] rounded-r-md"></div>
-
-            {/* Screen */}
-            <div className="relative w-full h-full bg-[#F4F4F0] rounded-[2.6rem] md:rounded-[2.8rem] overflow-hidden">
-              {/* Dynamic Island */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[110px] md:w-[125px] h-[30px] md:h-[34px] bg-black rounded-full z-20 flex items-center justify-end px-3">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]"></div>
-              </div>
-              
-              <iframe
-                style={{ border: "none" }}
-                className="absolute inset-0 w-full h-full"
-                src="https://embed.figma.com/proto/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1040-5557&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=1040%3A5557&embed-host=share&hide-ui=1"
-                allowFullScreen
-                title="Figma Embed High-Fidelity Flow"
-              ></iframe>
-            </div>
+          <div className="relative w-full max-w-[360px] md:max-w-[420px] h-[750px] md:h-[850px] mt-6 mb-4">
+            <iframe
+              style={{ border: "none" }}
+              className="absolute inset-0 w-full h-full"
+              src="https://embed.figma.com/proto/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1040-5557&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=1040%3A5557&embed-host=share&hide-ui=1"
+              allowFullScreen
+              title="Figma Embed High-Fidelity Flow"
+            ></iframe>
           </div>
 
           {/* Full Screen Link */}
