@@ -133,7 +133,7 @@ export default function PrototypeSection() {
           {/* Full Screen Link */}
           <div className="mt-4 flex items-center justify-center">
             <a
-              href="#"
+              href="https://www.figma.com/proto/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1040-5557&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=1040%3A5557"
               id="fullscreen-prototype-link"
               target="_blank"
               rel="noopener noreferrer"
