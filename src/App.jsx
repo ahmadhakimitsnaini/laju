@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import Navbar from "./components/layout/Navbar";
 import HeroSection from "./sections/HeroSection";
 import DynamicBackground from "./components/ui/DynamicBackground";
+import { MotionProvider } from "./components/ui/Animations";
 
 const OverviewSection = React.lazy(() => import("./sections/OverviewSection"));
 const DefineSection = React.lazy(() => import("./sections/DefineSection"));
@@ -12,29 +13,31 @@ const Footer = React.lazy(() => import("./components/layout/Footer"));
 
 export default function App() {
   return (
-    <div
-      style={{
-        backgroundColor: "transparent",
-        minHeight: "100vh",
-        color: "#111", // Changed from F3F4F6 to 111 since background is light
-        fontFamily: "'Roobert', sans-serif",
-      }}
-    >
-      <DynamicBackground />
-      <Navbar />
-      <main>
-        <HeroSection />
-        <Suspense fallback={<div className="h-32 flex items-center justify-center text-gray-500">Memuat bagian...</div>}>
-          <OverviewSection />
-          <DefineSection />
-          <IdeateSection />
-          <PrototypeSection />
-          <TestSection />
+    <MotionProvider>
+      <div
+        style={{
+          backgroundColor: "transparent",
+          minHeight: "100vh",
+          color: "#111",
+          fontFamily: "'Roobert', sans-serif",
+        }}
+      >
+        <DynamicBackground />
+        <Navbar />
+        <main>
+          <HeroSection />
+          <Suspense fallback={<div className="h-32 flex items-center justify-center text-gray-500">Memuat bagian...</div>}>
+            <OverviewSection />
+            <DefineSection />
+            <IdeateSection />
+            <PrototypeSection />
+            <TestSection />
+          </Suspense>
+        </main>
+        <Suspense fallback={null}>
+          <Footer />
         </Suspense>
-      </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
-    </div>
+      </div>
+    </MotionProvider>
   );
 }

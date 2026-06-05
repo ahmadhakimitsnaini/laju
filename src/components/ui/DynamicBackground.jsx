@@ -1,9 +1,10 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
+import { m } from "./Animations";
 
 export default function DynamicBackground() {
   const { scrollYProgress } = useScroll();
 
-  // Create subtle parallax movements for the orbs based on scroll
+  // Subtle parallax movements for the orbs based on scroll
   const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
   const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
@@ -23,9 +24,9 @@ export default function DynamicBackground() {
         }}
       />
 
-      {/* Blue Aurora Orb */}
-      <motion.div
-        style={{ y: y1, x: x1, background: "radial-gradient(circle, #0052CC, transparent 70%)", willChange: "transform, opacity" }}
+      {/* Blue Aurora Orb — pakai m.div agar kompatibel dengan LazyMotion */}
+      <m.div
+        style={{ y: y1, x: x1, background: "radial-gradient(circle, #0052CC, transparent 70%)", willChange: "transform" }}
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.3, 0.4, 0.3],
@@ -39,8 +40,8 @@ export default function DynamicBackground() {
       />
 
       {/* Orange Aurora Orb */}
-      <motion.div
-        style={{ y: y2, x: x2, background: "radial-gradient(circle, #FF7A00, transparent 70%)", willChange: "transform, opacity" }}
+      <m.div
+        style={{ y: y2, x: x2, background: "radial-gradient(circle, #FF7A00, transparent 70%)", willChange: "transform" }}
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.2, 0.3, 0.2],

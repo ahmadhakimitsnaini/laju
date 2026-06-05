@@ -1,6 +1,5 @@
 import { Shield, Users, Wallet } from "lucide-react";
-import { motion } from "framer-motion";
-import { FadeInWhenVisible, StaggerWrap, StaggerText, staggerContainer, staggerItem } from "../components/ui/Animations";
+import { FadeInWhenVisible, StaggerWrap, StaggerText, staggerContainer, staggerItem, m } from "../components/ui/Animations";
 import SectionBadge from "../components/ui/SectionBadge";
 
 export default function OverviewSection() {
@@ -87,7 +86,7 @@ export default function OverviewSection() {
         </FadeInWhenVisible>
 
         {/* Pillars Grid */}
-        <motion.div
+        <m.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="visible"
@@ -95,7 +94,7 @@ export default function OverviewSection() {
           variants={staggerContainer}
         >
           {pillars.map((pillar) => (
-            <motion.div
+            <m.div
               key={pillar.id}
               id={pillar.id}
               className="group relative p-6 rounded-3xl glass-card cursor-pointer overflow-hidden"
@@ -147,9 +146,9 @@ export default function OverviewSection() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

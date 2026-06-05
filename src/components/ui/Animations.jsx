@@ -1,7 +1,31 @@
 /* eslint-disable react-refresh/only-export-components */
-import { motion } from "framer-motion";
+/**
+ * Animations.jsx
+ *
+ * Optimized: Menggunakan LazyMotion + domAnimation untuk tree-shaking
+ * Framer Motion yang lebih agresif. Semua komponen `motion.*` diganti
+ * dengan `m.*` agar hanya fitur yang dipakai yang masuk ke bundle.
+ *
+ * Hemat ~30KB gzip vs import `motion` penuh.
+ */
+import { lazy, Suspense } from "react";
+import { LazyMotion, domAnimation, m, useInView } from "framer-motion";
+import { useRef } from "react";
 
+// ─────────────────────────────────────────────────────────
+// Provider: Bungkus seluruh app dengan LazyMotionProvider
+// ─────────────────────────────────────────────────────────
+export function MotionProvider({ children }) {
+  return (
+    <LazyMotion features={domAnimation} strict>
+      {children}
+    </LazyMotion>
+  );
+}
 
+// ─────────────────────────────────────────────────────────
+// Variants
+// ─────────────────────────────────────────────────────────
 export const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -17,7 +41,7 @@ export const staggerItem = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-// 1, 2, 3: Composed Animation (Scale + Stagger + Custom Rotation)
+// Composed animation untuk Hero grid columns
 export const composedAnimation = {
   hidden: { opacity: 0, scale: 0.8, y: 60, rotateX: 15 },
   visible: {
@@ -34,7 +58,11 @@ export const composedAnimation = {
   },
 };
 
-// Reusable scroll-triggered wrapper
+// ─────────────────────────────────────────────────────────
+// Reusable scroll-triggered wrapper — menggunakan `m.div`
+// viewport: { once: true } agar animasi tidak diulang saat
+// user scroll balik ke atas (hemat CPU)
+// ─────────────────────────────────────────────────────────
 export function FadeInWhenVisible({
   children,
   variants = fadeUp,
@@ -42,7 +70,7 @@ export function FadeInWhenVisible({
   delay = 0,
 }) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -51,14 +79,16 @@ export function FadeInWhenVisible({
       transition={{ delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
-// Micro-interaction Text Wrappers
+// ─────────────────────────────────────────────────────────
+// Stagger Wrapper — menggunakan `m.div`
+// ─────────────────────────────────────────────────────────
 export function StaggerWrap({ children, className = "", delay = 0 }) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -67,15 +97,23 @@ export function StaggerWrap({ children, className = "", delay = 0 }) {
       transition={{ delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
+// ─────────────────────────────────────────────────────────
+// Stagger Text Item — menggunakan `m.div`
+// ─────────────────────────────────────────────────────────
 export function StaggerText({ children, className = "" }) {
   return (
-    <motion.div className={className} variants={staggerItem}>
+    <m.div className={className} variants={staggerItem}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
+// ─────────────────────────────────────────────────────────
+// Re-export `m` agar komponen lain bisa pakai `m.div`, dll
+// tanpa perlu import dari framer-motion langsung
+// ─────────────────────────────────────────────────────────
+export { m };

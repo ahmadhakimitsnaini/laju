@@ -4,10 +4,11 @@ import screen2 from "../assets/mainPage/screen 2.webp";
 import screen3 from "../assets/mainPage/screen 3.webp";
 import screen4 from "../assets/mainPage/screen 4.webp";
 import { Clock, Wrench, ArrowRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 import {
   staggerContainer,
   composedAnimation,
+  m,
 } from "../components/ui/Animations";
 import GradientButton from "../components/ui/GradientButton";
 
@@ -42,7 +43,7 @@ export default function HeroSection() {
       <div className="w-full flex flex-col items-center justify-start z-10">
 
         {/* ── ATAS: TEKS HERO ── */}
-        <motion.div
+        <m.div
           className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto w-full mb-16"
           initial="hidden"
           animate="visible"
@@ -116,10 +117,10 @@ export default function HeroSection() {
               Baca Case Study <ArrowRight size={18} />
             </GradientButton>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* ── BAWAH: MASONRY 4-KOLOM GRID ── */}
-        <motion.div
+        <m.div
           className="relative w-full h-[100vh] max-h-[1200px] overflow-hidden flex justify-center items-start px-4 md:px-8 gap-4 md:gap-6 lg:gap-8 mt-8"
           initial="hidden"
           animate="visible"
@@ -128,7 +129,7 @@ export default function HeroSection() {
           {/* Fade gradient atas/bawah dihapus agar DynamicBackground terlihat utuh */}
 
           {/* Kolom 1 (Kiri Luar - Ke Atas) */}
-          <motion.div
+          <m.div
             style={{ y: yParallax1 }}
             className="flex-1 flex flex-col mt-12 overflow-visible"
             variants={composedAnimation}
@@ -147,10 +148,10 @@ export default function HeroSection() {
                 ),
               )}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Kolom 2 (Tengah Kiri - Ke Bawah) */}
-          <motion.div
+          <m.div
             style={{ y: yParallax2 }}
             className="flex-1 flex flex-col -mt-8 overflow-visible"
             variants={composedAnimation}
@@ -169,10 +170,10 @@ export default function HeroSection() {
                 ),
               )}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Kolom 3 (Tengah Kanan - Ke Bawah) */}
-          <motion.div
+          <m.div
             style={{ y: yParallax3 }}
             className="flex-1 flex flex-col mt-4 overflow-visible"
             variants={composedAnimation}
@@ -191,10 +192,10 @@ export default function HeroSection() {
                 ),
               )}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Kolom 4 (Kanan Luar - Ke Atas) */}
-          <motion.div
+          <m.div
             style={{ y: yParallax4 }}
             className="flex-1 flex flex-col mt-20 overflow-visible"
             variants={composedAnimation}
@@ -213,8 +214,8 @@ export default function HeroSection() {
                 ),
               )}
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );
