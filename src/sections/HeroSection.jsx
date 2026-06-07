@@ -1,10 +1,8 @@
-import { useRef } from "react";
 import screen1 from "../assets/mainPage/screen.webp";
 import screen2 from "../assets/mainPage/screen 2.webp";
 import screen3 from "../assets/mainPage/screen 3.webp";
 import screen4 from "../assets/mainPage/screen 4.webp";
 import { Clock, Wrench, ArrowRight } from "lucide-react";
-import { useScroll, useTransform } from "framer-motion";
 import {
   staggerContainer,
   composedAnimation,
@@ -13,19 +11,6 @@ import {
 import GradientButton from "../components/ui/GradientButton";
 
 export default function HeroSection() {
-  const containerRef = useRef(null);
-
-  // Parallax ringan saat user men-scroll ke bawah
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Berbagai kecepatan parallax untuk menciptakan efek kedalaman pada grid
-  const yParallax1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const yParallax2 = useTransform(scrollYProgress, [0, 1], [0, -250]);
-  const yParallax3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const yParallax4 = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   // 4 kolom mockup — pola arah: ↑ ↓ ↓ ↑
   const col1 = [screen1, screen2, screen3, screen4];
@@ -35,7 +20,6 @@ export default function HeroSection() {
 
   return (
     <section
-      ref={containerRef}
       id="hero"
       className="relative flex flex-col overflow-x-hidden pt-32 md:pt-40"
     >
@@ -130,12 +114,11 @@ export default function HeroSection() {
 
           {/* Kolom 1 (Kiri Luar - Ke Atas) */}
           <m.div
-            style={{ y: yParallax1 }}
             className="flex-1 flex flex-col mt-12 overflow-visible"
             variants={composedAnimation}
           >
             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 animate-marquee-up">
-              {[...col1, ...col1, ...col1, ...col1, ...col1, ...col1].map(
+              {[...col1, ...col1].map(
                 (src, i) => (
                   <img
                     key={`col1-${i}`}
@@ -143,7 +126,7 @@ export default function HeroSection() {
                     alt={`Mockup 1-${i}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5"
                   />
                 ),
               )}
@@ -152,12 +135,11 @@ export default function HeroSection() {
 
           {/* Kolom 2 (Tengah Kiri - Ke Bawah) */}
           <m.div
-            style={{ y: yParallax2 }}
             className="flex-1 flex flex-col -mt-8 overflow-visible"
             variants={composedAnimation}
           >
             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 animate-marquee-down">
-              {[...col2, ...col2, ...col2, ...col2, ...col2, ...col2].map(
+              {[...col2, ...col2].map(
                 (src, i) => (
                   <img
                     key={`col2-${i}`}
@@ -165,7 +147,7 @@ export default function HeroSection() {
                     alt={`Mockup 2-${i}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5"
                   />
                 ),
               )}
@@ -174,12 +156,11 @@ export default function HeroSection() {
 
           {/* Kolom 3 (Tengah Kanan - Ke Bawah) */}
           <m.div
-            style={{ y: yParallax3 }}
             className="flex-1 flex flex-col mt-4 overflow-visible"
             variants={composedAnimation}
           >
             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 animate-marquee-down">
-              {[...col3, ...col3, ...col3, ...col3, ...col3, ...col3].map(
+              {[...col3, ...col3].map(
                 (src, i) => (
                   <img
                     key={`col3-${i}`}
@@ -187,7 +168,7 @@ export default function HeroSection() {
                     alt={`Mockup 3-${i}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5"
                   />
                 ),
               )}
@@ -196,12 +177,11 @@ export default function HeroSection() {
 
           {/* Kolom 4 (Kanan Luar - Ke Atas) */}
           <m.div
-            style={{ y: yParallax4 }}
             className="flex-1 flex flex-col mt-20 overflow-visible"
             variants={composedAnimation}
           >
             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 animate-marquee-up">
-              {[...col4, ...col4, ...col4, ...col4, ...col4, ...col4].map(
+              {[...col4, ...col4].map(
                 (src, i) => (
                   <img
                     key={`col4-${i}`}
@@ -209,7 +189,7 @@ export default function HeroSection() {
                     alt={`Mockup 4-${i}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5 transition-transform duration-500 hover:scale-105"
+                    className="w-full object-contain rounded-[1.5rem] md:rounded-[2rem] border border-white/40 shadow-xl shadow-black/5"
                   />
                 ),
               )}
