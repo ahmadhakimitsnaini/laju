@@ -15,7 +15,7 @@ export default function DynamicBackground() {
 
       {/* Blue Aurora Orb — static div with lightweight CSS animation */}
       <div
-        className="absolute -top-64 -left-64 w-[800px] h-[800px] rounded-full blur-[80px] animate-orb-pulse"
+        className="absolute -top-64 -left-64 w-[800px] h-[800px] rounded-full animate-orb-pulse will-change-[opacity]"
         style={{
           background: "radial-gradient(circle, #0052CC, transparent 70%)",
           opacity: 0.3,
@@ -24,7 +24,7 @@ export default function DynamicBackground() {
 
       {/* Orange Aurora Orb — static div with lightweight CSS animation */}
       <div
-        className="absolute -bottom-64 -right-64 w-[900px] h-[900px] rounded-full blur-[80px] animate-orb-pulse-delayed"
+        className="absolute -bottom-64 -right-64 w-[900px] h-[900px] rounded-full animate-orb-pulse-delayed will-change-[opacity]"
         style={{
           background: "radial-gradient(circle, #FF7A00, transparent 70%)",
           opacity: 0.2,

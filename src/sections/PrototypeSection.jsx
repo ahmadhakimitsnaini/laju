@@ -5,20 +5,16 @@ import SectionBadge from "../components/ui/SectionBadge";
 export default function PrototypeSection() {
   return (
     <section id="prototype" className="py-24 px-6 relative overflow-hidden">
-      {/* Horizontal stripes grid */}
+      {/* Architectural Blueprint Grid */}
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
         style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, #FF7A00 0px, #FF7A00 1px, transparent 1px, transparent 40px)",
-        }}
-      />
-      {/* Subtle vertical accents */}
-      <div
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(90deg, #FF7A00 0px, #FF7A00 1px, transparent 1px, transparent 120px)",
+          backgroundImage: `
+            repeating-linear-gradient(0deg, #FF7A00 0px, #FF7A00 1px, transparent 1px, transparent 40px),
+            repeating-linear-gradient(90deg, #FF7A00 0px, #FF7A00 1px, transparent 1px, transparent 40px)
+          `,
+          maskImage: "radial-gradient(ellipse at center, black 20%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 20%, transparent 80%)",
         }}
       />
       {/* Orange glow top-left */}
@@ -115,6 +111,7 @@ export default function PrototypeSection() {
             }}
           >
             <iframe
+              loading="lazy"
               className="absolute top-0 left-0 w-full h-full"
               style={{
                 border: "none",

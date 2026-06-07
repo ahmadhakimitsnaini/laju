@@ -44,7 +44,7 @@ export default function TestSection() {
   ];
 
   return (
-    <section id="test" className="py-24 px-6 relative overflow-hidden">
+    <section id="test" className="py-24 px-6 relative overflow-hidden bg-white/40 backdrop-blur-[2px] border-y border-white/50 shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible>

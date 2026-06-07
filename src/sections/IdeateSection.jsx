@@ -62,7 +62,7 @@ export default function IdeateSection() {
   const activeItem = embedItems.find((item) => item.id === activeTab) || embedItems[0];
 
   return (
-    <section id="ideate" className="py-24 px-6 relative overflow-hidden">
+    <section id="ideate" className="py-24 px-6 relative overflow-hidden bg-white/40 backdrop-blur-[2px] border-y border-white/50 shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
 
 
       <div className="relative max-w-7xl mx-auto">
@@ -181,6 +181,7 @@ export default function IdeateSection() {
                   )}
 
                   <iframe
+                    loading="lazy"
                     onLoad={() => setIframeLoaded(true)}
                     style={{ border: "none" }}
                     className={`w-full h-full rounded-2xl transition-opacity duration-700 ${iframeLoaded ? 'opacity-100' : 'opacity-0'}`}

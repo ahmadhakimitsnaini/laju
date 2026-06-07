@@ -34,7 +34,7 @@ export default function OverviewSection() {
   ];
 
   return (
-    <section id="overview" className="py-24 px-6 relative overflow-hidden">
+    <section id="overview" className="py-24 px-6 relative overflow-hidden bg-white/40 backdrop-blur-[2px] border-y border-white/50 shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
 
       <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
@@ -76,6 +76,7 @@ export default function OverviewSection() {
         <FadeInWhenVisible delay={0.1}>
           <div className="max-w-4xl mb-16 rounded-3xl overflow-hidden border border-white/20 bg-[#232323] p-4 md:p-6 lg:p-8 shadow-xl shadow-black/10">
             <iframe
+              loading="lazy"
               style={{ border: "none" }}
               className="w-full aspect-video rounded-xl"
               src="https://embed.figma.com/design/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1063-4081&embed-host=share"
