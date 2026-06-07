@@ -61,7 +61,7 @@ export default function DefineSection() {
           <div className="mb-12">
             <SectionBadge variant="orange">Tahap Define</SectionBadge>
             <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              Struktur & <span className="text-[#FF7A00]">Alur Pengguna</span>
+              Struktur & <span className="text-[#0052CC]">Alur Pengguna</span>
             </h2>
           </div>
         </FadeInWhenVisible>
@@ -81,7 +81,7 @@ export default function DefineSection() {
               driver mereka, disertai jaminan{" "}
               <span className="text-[#0052CC] font-bold">keamanan yang terverifikasi</span>,
               dan kemudahan bertransaksi tanpa hambatan melalui{" "}
-              <span className="text-[#FF7A00] font-bold">
+              <span className="text-[#0052CC] font-bold">
                 ekosistem pembayaran terintegrasi
               </span>
               ."

@@ -37,7 +37,7 @@ export default function PrototypeSection() {
           <div className="mb-12">
             <SectionBadge variant="orange">Tahap Prototype</SectionBadge>
             <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-              <span className="text-[#FF7A00]">Prototype</span>
+              <span className="text-[#0052CC]">Prototype</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-3xl leading-relaxed">
               Wireframe ditransformasi menjadi desain visual akhir menggunakan
@@ -72,7 +72,7 @@ export default function PrototypeSection() {
             {
               label: "Roobert Font",
               desc: "Tipografi modern dengan bobot beragam untuk hierarchy teks yang jelas dan keterbacaan optimal.",
-              color: "#F177A4",
+              color: "#0052CC",
             },
           ].map((item) => (
             <div

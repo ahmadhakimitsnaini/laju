@@ -158,10 +158,10 @@ export default function Navbar() {
                       handleNav(link.href);
                     }}
                     className={`text-base font-medium transition-colors flex items-center gap-2 ${
-                      isActive ? "text-[#FF7A00]" : "text-gray-700 hover:text-black"
+                      isActive ? "text-[#0052CC]" : "text-gray-700 hover:text-black"
                     }`}
                   >
-                    <ChevronRight size={16} className={isActive ? "text-[#FF7A00]" : "text-black/50"} />
+                    <ChevronRight size={16} className={isActive ? "text-[#0052CC]" : "text-black/50"} />
                     {link.label}
                   </a>
                 </li>

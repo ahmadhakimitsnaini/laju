@@ -73,7 +73,7 @@ export default function Footer() {
                 <a
                   href="mailto:ahmadhakimitsnaini@gmail.com"
                   id="social-email"
-                  className="circle-icon-btn w-9 h-9 flex items-center justify-center text-gray-500 hover:text-[#FF7A00] cursor-pointer"
+                  className="circle-icon-btn w-9 h-9 flex items-center justify-center text-gray-500 hover:text-[#0052CC] cursor-pointer"
                   title="Email"
                 >
                   <Mail size={16} />

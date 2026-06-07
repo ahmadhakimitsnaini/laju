@@ -44,7 +44,7 @@ export default function HeroSection() {
           </h1>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6 max-w-4xl">
             Redefining <span className="text-[#0052CC]">Ride-Hailing</span> with{" "}
-            <span className="text-[#FF7A00]">Human-Centric</span> Tech
+            <span className="text-[#0052CC]">Human-Centric</span> Tech
           </h2>
 
           {/* Sub-headline */}
