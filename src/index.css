@@ -222,4 +222,18 @@
   .animate-marquee-down:hover {
     animation-play-state: paused;
   }
+
+  /* Aurora Orb Pulse — opacity only (composite-friendly, no repaint) */
+  @keyframes orb-pulse {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 0.45; }
+  }
+
+  .animate-orb-pulse {
+    animation: orb-pulse 10s ease-in-out infinite;
+  }
+
+  .animate-orb-pulse-delayed {
+    animation: orb-pulse 12s ease-in-out 2s infinite;
+  }
 }

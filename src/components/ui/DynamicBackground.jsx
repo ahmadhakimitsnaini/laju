@@ -1,15 +1,4 @@
-import { useScroll, useTransform } from "framer-motion";
-import { m } from "./Animations";
-
 export default function DynamicBackground() {
-  const { scrollYProgress } = useScroll();
-
-  // Subtle parallax movements for the orbs based on scroll
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-  const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const x2 = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden bg-[#F4F6F8] pointer-events-none">
       {/* Soft Grid Matrix with Vignette Masking */}
@@ -24,35 +13,22 @@ export default function DynamicBackground() {
         }}
       />
 
-      {/* Blue Aurora Orb — pakai m.div agar kompatibel dengan LazyMotion */}
-      <m.div
-        style={{ y: y1, x: x1, background: "radial-gradient(circle, #0052CC, transparent 70%)", willChange: "transform" }}
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.4, 0.3],
+      {/* Blue Aurora Orb — static div with lightweight CSS animation */}
+      <div
+        className="absolute -top-64 -left-64 w-[800px] h-[800px] rounded-full blur-[80px] animate-orb-pulse"
+        style={{
+          background: "radial-gradient(circle, #0052CC, transparent 70%)",
+          opacity: 0.3,
         }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute -top-64 -left-64 w-[800px] h-[800px] rounded-full blur-[120px]"
       />
 
-      {/* Orange Aurora Orb */}
-      <m.div
-        style={{ y: y2, x: x2, background: "radial-gradient(circle, #FF7A00, transparent 70%)", willChange: "transform" }}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.3, 0.2],
+      {/* Orange Aurora Orb — static div with lightweight CSS animation */}
+      <div
+        className="absolute -bottom-64 -right-64 w-[900px] h-[900px] rounded-full blur-[80px] animate-orb-pulse-delayed"
+        style={{
+          background: "radial-gradient(circle, #FF7A00, transparent 70%)",
+          opacity: 0.2,
         }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute -bottom-64 -right-64 w-[900px] h-[900px] rounded-full blur-[120px]"
       />
     </div>
   );
