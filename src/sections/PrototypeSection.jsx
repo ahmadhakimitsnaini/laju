@@ -105,30 +105,42 @@ export default function PrototypeSection() {
 
         {/* Figma Prototype Embed */}
         <div className="relative flex flex-col items-center">
-          <div className="relative w-full max-w-[360px] md:max-w-[420px] h-[750px] md:h-[850px] mt-6 mb-4">
+          {/* Wide landscape container — lets Figma's native device frame render naturally */}
+          <div
+            className="relative mt-6 mb-6 w-full mx-auto overflow-hidden rounded-2xl shadow-xl"
+            style={{
+              maxWidth: "1000px",
+              height: "700px",
+              background: "#1E1E1E",
+            }}
+          >
             <iframe
-              style={{ border: "none" }}
-              className="absolute inset-0 w-full h-full"
-              src="https://embed.figma.com/proto/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1040-5557&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=1040%3A5557&embed-host=share&hide-ui=1"
+              className="absolute top-0 left-0 w-full h-full"
+              style={{
+                border: "none",
+              }}
+              src="https://embed.figma.com/proto/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1040-5557&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1040%3A5557&embed-host=share"
               allowFullScreen
               title="Figma Embed High-Fidelity Flow"
             ></iframe>
           </div>
 
-          {/* Full Screen Link */}
-          <div className="mt-4 flex items-center justify-center">
+          {/* Full Screen CTA Button */}
+          <div className="mt-2 flex items-center justify-center">
             <a
               href="https://www.figma.com/proto/XF3j3uIAgfkrNqcWO36REq/Untitled?node-id=1040-5557&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=1040%3A5557"
               id="fullscreen-prototype-link"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-black hover:text-black font-semibold transition-colors duration-200 group"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-base font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              style={{
+                background: "linear-gradient(135deg, #0052CC 0%, #0052CC 100%)",
+                color: "#ffffff",
+                boxShadow: "0 4px 20px rgba(0,82,204,0.3)",
+              }}
             >
-              <ExternalLink
-                size={14}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-              Buka Full Screen
+              <ExternalLink size={18} />
+              Buka di Figma (Full Screen)
             </a>
           </div>
         </div>
